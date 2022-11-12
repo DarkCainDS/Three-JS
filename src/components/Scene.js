@@ -69,6 +69,16 @@ export const Scene = () => {
             displacementScale: 0.1,
 
         }); //{ color: 0xffff00,wireframe: true }
+        const material4 = new THREE.MeshStandardMaterial({
+            map: map,
+            ambientOclussionMap: ambientOclussionMap,
+            RoughnessMap: RoughnessMap,
+            color: 0xFF0000,
+            normalMap: NormalMap,
+            displacementMap: heightMap,
+            displacementScale: 0.1,
+
+        });
         const sphere2 = new THREE.Mesh(geometry3, material3);
         scene.add(sphere2);
         sphere2.position.x = 2.5;
@@ -78,6 +88,22 @@ export const Scene = () => {
         //Light
         const light = new THREE.AmbientLight(0xffffff, 1);
         scene.add(light)
+
+        const pointLight = new THREE.PointLight(0x00FF00, 1);
+        pointLight.position.set(-1, -2, 1);
+        scene.add(pointLight)
+
+        //sphere3
+        const sphere3 = new THREE.Mesh(geometry3, material4);
+        scene.add(sphere3);
+        sphere3.position.x = -2.5;
+        sphere3.position.y = 1;
+        
+        //Light
+        const pointLight2 = new THREE.PointLight(0xFF0000, 1.5);
+        pointLight2.position.set(1, 2, 3);
+        scene.add(pointLight2)
+
 
         //TorusKnotGeometry
         const geometry2 = new THREE.TorusKnotGeometry(0.3, 0.0700, 100, 16);
